@@ -61,22 +61,22 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     }
 
     private void validateUomInitialData() {
-        Optional<UnitOfMeasure> eachOptional = this.unitOfMeasureRepository.findByUom("Each");
+        Optional<UnitOfMeasure> eachOptional = this.unitOfMeasureRepository.findByDescription("Each");
         if (!eachOptional.isPresent()) throw new NoSuchElementException("Expected Each UOM not found.");
 
-        Optional<UnitOfMeasure> teaspoonOptional = this.unitOfMeasureRepository.findByUom("Teaspoon");
+        Optional<UnitOfMeasure> teaspoonOptional = this.unitOfMeasureRepository.findByDescription("Teaspoon");
         if (!teaspoonOptional.isPresent()) throw new NoSuchElementException("Expected Teaspoon UOM not found.");
 
-        Optional<UnitOfMeasure> tableSpoonOptional = this.unitOfMeasureRepository.findByUom("Tablespoon");
+        Optional<UnitOfMeasure> tableSpoonOptional = this.unitOfMeasureRepository.findByDescription("Tablespoon");
         if (!tableSpoonOptional.isPresent()) throw new NoSuchElementException("Expected Tablespoon UOM not found.");
 
-        Optional<UnitOfMeasure> cupOptional = this.unitOfMeasureRepository.findByUom("Cup");
+        Optional<UnitOfMeasure> cupOptional = this.unitOfMeasureRepository.findByDescription("Cup");
         if (!cupOptional.isPresent()) throw new NoSuchElementException("Expected Cup UOM not found.");
 
-        Optional<UnitOfMeasure> pintOptional = this.unitOfMeasureRepository.findByUom("Pint");
+        Optional<UnitOfMeasure> pintOptional = this.unitOfMeasureRepository.findByDescription("Pint");
         if (!pintOptional.isPresent()) throw new NoSuchElementException("Expected Pinch UOM not found.");
 
-        Optional<UnitOfMeasure> dashOptional = this.unitOfMeasureRepository.findByUom("Dash");
+        Optional<UnitOfMeasure> dashOptional = this.unitOfMeasureRepository.findByDescription("Dash");
         if (!dashOptional.isPresent()) throw new NoSuchElementException("Expected Dash UOM not found.");
 
         this.eachUom = eachOptional.get();
@@ -139,6 +139,10 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         guacRecipe.getCategories().add(americanCategory);
         guacRecipe.getCategories().add(mexicanCategory);
 
+        guacRecipe.setUrl("http://www.simplyrecipes.com/recipes/perfect_guacamole/");
+        guacRecipe.setServings(4);
+        guacRecipe.setSource("Simply Recipes");
+
         return guacRecipe;
     }
 
@@ -195,6 +199,10 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
         tacosRecipe.getCategories().add(americanCategory);
         tacosRecipe.getCategories().add(mexicanCategory);
+
+        tacosRecipe.setUrl("http://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/");
+        tacosRecipe.setServings(4);
+        tacosRecipe.setSource("Simply Recipes");
 
         return tacosRecipe;
     }

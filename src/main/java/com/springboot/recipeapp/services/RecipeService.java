@@ -1,12 +1,19 @@
 package com.springboot.recipeapp.services;
 
+import com.springboot.recipeapp.commands.RecipeCommand;
 import com.springboot.recipeapp.domain.Recipe;
 
 import java.util.Set;
 
-/**
- * Created by Daniel on 23/09/2017.
- */
 public interface RecipeService {
-    public Set<Recipe> getRecipes();
+
+    Set<Recipe> getRecipes();
+
+    Recipe findById(Long l);
+
+    RecipeCommand findCommandById(Long l);
+
+    RecipeCommand saveRecipeCommand(RecipeCommand command);
+
+    void deleteById(Long idToDelete);
 }
